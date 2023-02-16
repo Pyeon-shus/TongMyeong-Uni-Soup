@@ -26,21 +26,18 @@ async def on_message(message):
 
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!')
+        
     if message.content.startswith(f'{PREFIX}학식'):  # "?"이라고 말했을때
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
-
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
-
         meal_list = soup.find_all(class_='table-wrap')
-
         result = "오늘의 식단은 \n \n"
         for meals in meal_list:
             meal_name = meals.find('th').get_text()
             meal_detail = meals.find('td').get_text()
             result += f"{meal_name}: {meal_detail}\n"
-
-        await message.reply(result)
+        await message.channel.send(result)
 
 try:
     client.run(TOKEN)

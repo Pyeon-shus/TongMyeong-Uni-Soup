@@ -28,6 +28,7 @@ async def on_message(message):
         await message.channel.send('Hello!')
         
     if message.content.startswith(f'{PREFIX}학식'):
+        print('입력됨')
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')

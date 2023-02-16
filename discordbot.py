@@ -1,4 +1,5 @@
 from cmath import log
+PREFIX = os.environ['PREFIX']
 from distutils.sysconfig import PREFIX
 import discord
 from dotenv import load_dotenv
@@ -7,7 +8,6 @@ import requests
 from bs4 import BeautifulSoup
 load_dotenv()
 
-PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 
 client = discord.Client()

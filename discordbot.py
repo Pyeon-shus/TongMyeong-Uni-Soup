@@ -3,7 +3,7 @@ from distutils.sysconfig import PREFIX
 import discord
 from dotenv import load_dotenv
 import os
-import requests 
+import urllib.request
 from bs4 import BeautifulSoup
 load_dotenv()
 
@@ -27,11 +27,12 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!')
     if message.content.startswith(f'{PREFIX}학식'): { ## "?"이라고 말했을때
-        #웹페이지를 요청합니다.
-        req = requests.get('https://www.tu.ac.kr/tuhome/diet.do?sch')
+       import urllib.request
+        #웹 페이지를 요청합니다.
+        html = urllib.request.urlopen('https://www.tu.ac.kr/tuhome/diet.do?sch')
 
         #HTML을 분석합니다.
-        soup = BeautifulSoup(req.text, 'html.parser')
+        soup = BeautifulSoup(html, 'html.parser')
 
         #필요한 데이터를 가져옵니다.
         table = soup.find('table', class_='table-st1')
@@ -41,7 +42,7 @@ async def on_message(message):
         for tr in table.find_all('tr'):
            row = []
            for td in tr.find_all('td'):
-              row.append(td.text.strip())
+              row.append(td.text)
            data.append(row)
 
         #봇에 출력하기 위해 리스트를 문자열로 변환합니다.

@@ -3,7 +3,7 @@ from distutils.sysconfig import PREFIX
 import discord
 from dotenv import load_dotenv
 import os
-import request
+import requests
 from bs4 import BeautifulSoup
 load_dotenv()
 

@@ -3,6 +3,8 @@ from distutils.sysconfig import PREFIX
 import discord
 from dotenv import load_dotenv
 import os
+import requests 
+from bs4 import BeautifulSoup
 load_dotenv()
 
 PREFIX = os.environ['PREFIX']
@@ -25,8 +27,6 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!')
     if message.content.startswith(f'{PREFIX}학식'): { ## "?"이라고 말했을때
-        import requests 
-        from bs4 import BeautifulSoup
 
         #웹페이지를 요청합니다.
         req = requests.get('https://www.tu.ac.kr/tuhome/diet.do?sch')

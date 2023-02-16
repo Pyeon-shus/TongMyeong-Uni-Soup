@@ -27,29 +27,22 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!')
     if message.content.startswith(f'{PREFIX}학식'): { ## "?"이라고 말했을때
-        #웹 페이지를 요청합니다.
-        html = urllib.request.urlopen('https://www.tu.ac.kr/tuhome/diet.do?sch')
+        import requests
+        from bs4 import BeautifulSoup
 
-        #HTML을 분석합니다.
-        soup = BeautifulSoup(html, 'html.parser')
+        url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
 
-        #필요한 데이터를 가져옵니다.
-        table = soup.find('table', class_='table-st1')
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
 
-        #데이터를 리스트에 저장합니다.
-        data = []
-        for tr in table.find_all('tr'):
-           row = []
-           for td in tr.find_all('td'):
-              row.append(td.text)
-           data.append(row)
+        meal_list = soup.find_all(class_='table-wrap')
 
-        #봇에 출력하기 위해 리스트를 문자열로 변환합니다.
-        result = ''
-        for row in data:
-            result += '\n'.join(row) + '\n'
+        result = "오늘의 식단은 \n \n"
+        for meals in meal_list:
+            meal_name = meals.find('th').get_text()
+            meal_detail = meals.find('td').get_text()
+            result += f"{meal_name}: {meal_detail}\n"
 
-        #결과를 봇으로 출력합니다.
         msg.reply(result)
 
 

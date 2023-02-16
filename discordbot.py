@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 import os
 import requests
 from bs4 import BeautifulSoup
+
+pip install requests
+
 load_dotenv()
 
 PREFIX = os.environ['PREFIX']

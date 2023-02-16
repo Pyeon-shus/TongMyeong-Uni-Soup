@@ -40,7 +40,7 @@ async def on_message(message):
             meal_detail = meals.find('td').get_text()
             result += f"{meal_name}: {meal_detail}\n"
 
-        msg.reply(result)
+        await message.reply(result)
 
 try:
     client.run(TOKEN)

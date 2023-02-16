@@ -9,6 +9,7 @@ load_dotenv()
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
+channel_id = '1031928945114894397'
 
 client = discord.Client()
 
@@ -27,7 +28,9 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!')
         
-    if message.content == "학식":
+    if message.content.startswith(f'{PREFIX}학식'):
+        channel_id = message.channel.id
+        await message.channel.send(f'The message was sent from channel {channel_id}.')
         print('입력됨')
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
         response = requests.get(url)
@@ -39,6 +42,7 @@ async def on_message(message):
             meal_detail = meals.find('td').get_text()
             result += f"{meal_name}: {meal_detail}\n"
         await message.channel.send(result)
+        
 
 try:
     client.run(TOKEN)

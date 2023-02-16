@@ -11,7 +11,7 @@ PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 channel_id = '1031928945114894397'
 
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():

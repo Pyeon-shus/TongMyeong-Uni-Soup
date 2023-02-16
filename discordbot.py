@@ -1,5 +1,4 @@
 from cmath import log
-PREFIX = os.environ['PREFIX']
 from distutils.sysconfig import PREFIX
 import discord
 from dotenv import load_dotenv
@@ -8,6 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 load_dotenv()
 
+PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 
 client = discord.Client()
@@ -39,7 +39,4 @@ async def on_message(message):
             result += f"{meal_name}: {meal_detail}\n"
         await message.channel.send(result)
 
-try:
-    client.run(TOKEN)
-except discord.errors.LoginFailure as e:
-    print("Improper token has been passed.")
+

@@ -39,4 +39,7 @@ async def on_message(message):
             result += f"{meal_name}: {meal_detail}\n"
         await message.channel.send(result)
 
-
+try:
+    client.run(TOKEN)
+except discord.errors.LoginFailure as e:
+    print("Improper token has been passed.")

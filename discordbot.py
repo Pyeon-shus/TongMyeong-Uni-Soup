@@ -27,7 +27,7 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!')
         
-    if message.content.startswith(f'{PREFIX}학식'):
+    if message.content == "학식":
         print('입력됨')
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
         response = requests.get(url)

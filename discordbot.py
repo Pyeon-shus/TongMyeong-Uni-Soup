@@ -2,7 +2,7 @@ from cmath import log
 from distutils.sysconfig import PREFIX
 import discord
 import datetime
-import pytz
+#import pytz
 from dotenv import load_dotenv
 import os
 import requests

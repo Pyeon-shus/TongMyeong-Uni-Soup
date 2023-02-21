@@ -12,13 +12,10 @@ load_dotenv()
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 channel_id = '969983391183282258'
-channel = None
-
-client = discord.Client(intents=discord.Intents.default())
+client = discord.Client()
 
 @client.event
 async def on_ready():
-    global channel
     channel = client.get_channel(969983391183282258) # 출력할 채널 ID를 넣어주세요
     print("디스코드 봇 로그인이 완료되었습니다.")
     print("디스코드봇 이름:" + client.user.name)

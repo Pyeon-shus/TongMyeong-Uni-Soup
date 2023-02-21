@@ -32,7 +32,7 @@ async def on_ready():
     #if message.content.startswith('$학식'):
         print(f'입력됨')
     # 입력한 채팅을 삭제한다.
-    await message.delete()
+    #await message.delete()
     
     #웹페이지를 요청합니다.
     url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'

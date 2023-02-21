@@ -18,18 +18,18 @@ async def on_ready():
     print(f'Logged in as {client.user}.')
     channel = client.get_channel(969983391183282258) # 출력할 채널 ID를 넣어주세요
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+#@client.event
+#async def on_message(message):
+    #if message.author == client.user:
+    #    return
 
-    if message.content == f'{PREFIX}call':
-        await channel.send("callback!")
+    #if message.content == f'{PREFIX}call':
+    #    await channel.send("callback!")
 
-    if message.content.startswith(f'{PREFIX}hello'):
-        await channel.send('Hello!')
+    #if message.content.startswith(f'{PREFIX}hello'):
+    #    await channel.send('Hello!')
         
-    if message.content.startswith(f'{PREFIX}학식'):
+    #if message.content.startswith(f'{PREFIX}학식'):
         print('입력됨')
         #웹페이지를 요청합니다.
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'

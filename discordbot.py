@@ -23,13 +23,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content == '!call':
+    if message.content == 'call':
         await channel.send("callback!")
 
-    if message.content.startswith('!hello'):
+    if message.content.startswith('$hello'):
         await channel.send('Hello!')
         
-    if message.content.startswith('!학식'):
+    if message.content.startswith('$학식'):
         print(f'입력됨')
         #웹페이지를 요청합니다.
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'

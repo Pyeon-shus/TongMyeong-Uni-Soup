@@ -1,6 +1,7 @@
 from cmath import log
 from distutils.sysconfig import PREFIX
 import discord
+import datetime
 from dotenv import load_dotenv
 import os
 import requests

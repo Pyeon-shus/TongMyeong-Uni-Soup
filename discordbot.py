@@ -31,15 +31,28 @@ async def on_message(message):
         
     if message.content.startswith(f'{PREFIX}학식'):
         print('입력됨')
+        #웹페이지를 요청합니다.
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        meal_list = soup.find_all(class_='table-wrap')
-        result = "오늘의 식단은 \n \n"
-        for meals in meal_list:
-            meal_name = meals.find('th').get_text()
-            meal_detail = meals.find('td').get_text()
-            result += f"{meal_name}: {meal_detail}\n"
+        req = requests.get(url)
+
+        #HTML을 분석합니다.
+        soup = BeautifulSoup(req.text, 'html.parser')
+
+        #필요한 데이터를 가져옵니다.
+        table = soup.find('table', class_='table-st1')
+
+        #데이터를 리스트에 저장합니다.
+        data = []
+        for tr in table.find_all('tr'):
+           row = []
+           for th in tr.find_all('th'):
+                 row.append(tr.text)
+           data.append(row)
+
+        #봇에 출력하기 위해 리스트를 문자열로 변환합니다.
+        result = ''
+        for row in data:
+            result += '\n'.join(row) + '\n'
         await channel.send(result)
         
 

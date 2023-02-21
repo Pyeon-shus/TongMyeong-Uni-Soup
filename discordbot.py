@@ -59,6 +59,10 @@ async def on_ready():
     for row in data:
         result += '\n'.join(row) + '\n'
     embed = discord.Embed(title="👋 :fork_and_knife:오늘의 식단:fork_and_knife:", description=result,timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x4c2896)
+    embed.set_thumbnail(url="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/steaming-bowl_1f35c.png")
+    embed.set_footer(text=" ")
+    await message.channel.send (embed=embed) # 유저 개인 DM으로 전송한다. 채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
+    
         #await channel.send(result)
         
 

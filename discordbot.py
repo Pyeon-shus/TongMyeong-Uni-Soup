@@ -1,5 +1,4 @@
 from cmath import log
-from distutils.sysconfig import PREFIX
 import discord
 import datetime
 import pytz
@@ -9,7 +8,6 @@ import requests
 from bs4 import BeautifulSoup
 load_dotenv()
 
-PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 channel_id = '969983391183282258'
 client = discord.Client(intents=discord.Intents.default())

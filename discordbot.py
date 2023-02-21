@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 import requests
 from bs4 import BeautifulSoup
+
 load_dotenv()
 
 PREFIX = os.environ['PREFIX']
@@ -15,8 +16,11 @@ channel_id = '1031928945114894397'
 
 client = discord.Client(intents=discord.Intents.default())
 
+channel = None
+
 @client.event
 async def on_ready():
+    global channel
     print("디스코드 봇 로그인이 완료되었습니다.")
     print("디스코드봇 이름:" + client.user.name)
     print("디스코드봇 ID:" + str(client.user.id))
@@ -28,6 +32,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global channel
     if message.author == client.user:
         return
 

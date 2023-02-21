@@ -30,7 +30,7 @@ async def on_ready():
     #    await channel.send('Hello!')
         
     #if message.content.startswith('$학식'):
-        print(f'입력됨')
+    print(f'입력됨')
     # 입력한 채팅을 삭제한다.
     #await message.delete()
     

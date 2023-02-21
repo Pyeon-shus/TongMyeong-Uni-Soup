@@ -11,7 +11,7 @@ load_dotenv()
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
-channel_id = '1031928945114894397'
+channel_id = '969983391183282258'
 channel = None
 
 client = discord.Client(intents=discord.Intents.default())

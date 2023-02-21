@@ -30,7 +30,7 @@ async def on_ready():
     #    await channel.send('Hello!')
         
     #if message.content.startswith(f'{PREFIX}학식'):
-        print('입력됨')
+        print(f'입력됨')
         #웹페이지를 요청합니다.
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
         req = requests.get(url)

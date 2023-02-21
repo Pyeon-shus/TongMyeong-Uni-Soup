@@ -22,6 +22,7 @@ async def on_ready():
     print("디스코드봇 ID:" + str(client.user.id))
     print("디스코드봇 버전:" + str(discord.__version__))
     print('------')
+    game = discord.Game('!학식 입력')
     channel = client.get_channel(969983391183282258) # 출력할 채널 ID를 넣어주세요
 
 @client.event

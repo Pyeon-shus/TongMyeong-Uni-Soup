@@ -1,4 +1,4 @@
-om cmath import log
+from cmath import log
 from distutils.sysconfig import PREFIX
 from dotenv import load_dotenv
 import os

@@ -43,7 +43,7 @@ async def on_message(message):
         print(f'입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
-        user = message.mentions[0] # '!학식' 에서 유저정보를 user에 담는다.
+        user = message.mentions[] # '!학식' 에서 유저정보를 user에 담는다.
         await channel.send("{} | {} 님이 '!학식'을 입력하셨습니다.".format(user.author, user.mention)) # 작성된 채널에 메세지를 출력한다.
         
         #웹페이지를 요청합니다.

@@ -1,19 +1,24 @@
-from cmath import log
+om cmath import log
 from distutils.sysconfig import PREFIX
-import discord
-import datetime
-import pytz
 from dotenv import load_dotenv
 import os
 import requests
 from bs4 import BeautifulSoup
+
+import discord, asyncio, datetime, pytz
+from discord.ext import commands
+from discord.utils import get
+from discord import Member
+
 load_dotenv()
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 channel_id = '969983391183282258'
-client = discord.Client(intents=discord.Intents.default())
-client = commands.Bot(command_prefix="!")
+intents =discord.Intents.default()
+intents.message_content = True
+intents.members = True
+client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 
 @client.event
 async def on_ready():

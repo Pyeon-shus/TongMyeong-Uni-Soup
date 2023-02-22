@@ -17,7 +17,7 @@ TOKEN = os.environ['TOKEN']
 channel_id = '969983391183282258'
 intents =discord.Intents.all
 client = discord.Client()
-client = commands.Bot(command_preffix intents=intents)
+client = commands.Bot(command_prefix='!')
 
 @client.event
 async def on_ready():

@@ -19,10 +19,10 @@ intents =discord.Intents.default()
 intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
+channel = client.get_channel(969983391183282258) # 출력할 채널 ID를 넣어주세요
 
 @client.event
 async def on_ready():
-    channel = client.get_channel(969983391183282258) # 출력할 채널 ID를 넣어주세요
     print("디스코드 봇 로그인이 완료되었습니다.")
     print("디스코드봇 이름:" + client.user.name)
     print("디스코드봇 ID:" + str(client.user.id))

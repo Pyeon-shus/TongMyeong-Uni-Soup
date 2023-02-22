@@ -44,7 +44,7 @@ async def on_message(message):
         #입력한 채팅을 삭제한다.
         #await message.delete()
         async def hi(self, ctx): 
-            await channel.send("{} | {} 님이 '!학식'을 입력하셨습니다.".format(ctx.author, ctx.author.mention)) # 작성된 채널에 메세지를 출력한다.
+            await ctx.send("{} | {} 님이 '!학식'을 입력하셨습니다.".format(ctx.author, ctx.author.mention)) # 작성된 채널에 메세지를 출력한다.
 
         #웹페이지를 요청합니다.
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'

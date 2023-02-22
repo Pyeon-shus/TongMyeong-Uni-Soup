@@ -15,6 +15,7 @@ load_dotenv()
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 channel_id = '969983391183282258'
+intents =discord.Intents.all
 client = discord.Client(intents=discord.Intents.default())
 client = commands.Bot(command_preffix intents=intents)
 

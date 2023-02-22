@@ -66,7 +66,7 @@ async def on_message(message):
         embed = discord.Embed(title=":fork_and_knife:오늘의 식단:fork_and_knife:", description=result,timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x4c2896)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         embed.set_footer(text="Bot Made by. Shus#7777, , 문의는 DM으로 부탁드립니다 💬")
-        await messae.channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
+        await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
         #await channel.send(result)
 

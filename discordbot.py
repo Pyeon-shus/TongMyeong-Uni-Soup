@@ -92,26 +92,32 @@ async def on_message(message):
                     
 
         #봇에 출력하기 위해 리스트를 문자열로 변환합니다.
-        result = ''
+        #result = ''
         #for row in data:
         #    result += '\n'.join(row) + '\n'
         embed = discord.Embed(title=":fork_and_knife:오늘의 식단:fork_and_knife:", description="{} 의 정보를 가져옵니다.".format(url),timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
+        result = ''
         for row in yangsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="양식", value=f"{result}", inline=False)
+        result = ''
         for row in myeonryu:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="면류", value=f"{result}", inline=False)
+        result = ''
         for row in bunsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="분식", value=f"{result}", inline=False)
+        result = ''
         for row in teukjeongsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="특정식", value=f"{result}", inline=False)
+        result = ''
         for row in ddukbaegi:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="뚝배기", value=f"{result}", inline=False)
+        result = ''
         for row in ilpum:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="일품", value=f"{result}", inline=False)

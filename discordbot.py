@@ -117,7 +117,7 @@ async def on_message(message):
         result = ''
         for row in ddukbaegi:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="#뚝배기", value=f"{result}"\n, inline=False)
+        embed.add_field(name="#뚝배기", value=f"{result}\n", inline=False)
         result = ''
         for row in ilpum:
             result += '\n'.join(row) + '\n'

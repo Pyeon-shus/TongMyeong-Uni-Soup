@@ -144,12 +144,15 @@ async def on_message(message):
 
         for tabs_con in tabs_con_wrap.find_all('div', class_='tabs-con'):
             for li in tabs_con.find_all('li', class_='item'):
+                
                 course = li.find('div', class_='course')
                 detail = li.find('div', class_='detail')
                 row = detail.text.replace('\n', '').strip()
                 if course.text == '석식' and row not in dinner:
+                    row.append(course.text)
                     dinner.append(row)
                 elif course.text == '조식' and row not in breakfast:
+                    row.append(course.text)
                     breakfast.append(row)
 
         # 각각의 식사 종류에 해당하는 메뉴들을 출력합니다.
@@ -171,7 +174,7 @@ async def on_message(message):
         for row in dinner:
             #result += '\n'.join(row) + '\n'
             embed.add_field(name="#석식", value=f"{dinner}\n\n", inline=False)
-            embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.\n\n", inline=False)
+            embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.

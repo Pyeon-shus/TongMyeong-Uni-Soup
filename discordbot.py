@@ -170,6 +170,7 @@ async def on_message(message):
         for row in dinner:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="#석식", value=f"{result}\n\n", inline=False)
+        embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.\n\n", inline=False)
         embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.

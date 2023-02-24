@@ -57,21 +57,45 @@ async def on_message(message):
         #필요한 데이터를 가져옵니다.
         table = soup.find('table', class_='table-st1')
 
-        #데이터를 리스트에 저장합니다.
-        data = []
+        #각 음식 종류에 해당하는 메뉴를 따로 저장합니다.
+        yangsik = []
+        myeonryu = []
+        bunsik = []
+        teukjeongsik = []
+        ddukbaegi = []
+        ilpum = []
+
         for tr in table.find_all('tr'):
-           row = []
-           for th in tr.find_all('th'):
-                 row.append(tr.text)
-           data.append(row)
+            th = tr.find('th')
+            td = tr.find('td')
+
+            if th and td:
+                if th.text == '양식':
+                    yangsik.append(td.text)
+                elif th.text == '면류':
+                    myeonryu.append(td.text)
+                elif th.text == '분식':
+                    bunsik.append(td.text)
+                elif th.text == '특정식':
+                    teukjeongsik.append(td.text)
+                elif th.text == '뚝배기':
+                    ddukbaegi.append(td.text)
+                elif th.text == '일품':
+                    ilpum.append(td.text)
 
         #봇에 출력하기 위해 리스트를 문자열로 변환합니다.
         result = ''
         for row in data:
             result += '\n'.join(row) + '\n'
-        embed = discord.Embed(title=":fork_and_knife:오늘의 식단:fork_and_knife:", description=result,timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=96C81E)
+        embed = discord.Embed(title=":fork_and_knife:오늘의 식단:fork_and_knife:", description="{} 의 정보를 가져옵니다.".format(url),timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
-        embed.set_footer(text="Bot Made by. Shus#7777, , 문의는 DM으로 부탁드립니다 💬")
+        embed.add_field(name="양식", value=f"{yangsik}", inline=False)
+        embed.add_field(name="면류", value=f"{myeonryu}", inline=False)
+        embed.add_field(name="분식", value=f"{bunsik}", inline=False)
+        embed.add_field(name="특정식", value=f"{teukjeongsik}", inline=False)
+        embed.add_field(name="뚝배기", value=f"{ddukbaegi}", inline=False)
+        embed.add_field(name="일품", value=f"{ilpum}", inline=False)
+        embed.set_footer(text="Bot Made by. Shus#7777                                ")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
         #await channel.send(result)

@@ -159,9 +159,9 @@ async def on_message(message):
         result = ''
         if breakfast:
             for row in breakfast:
-                result += '\n'.join(row) + '\n'
+                #result += '\n'.join(row) + '\n'
             embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="#조식", value=f"{result}\n\n", inline=False)
+            embed.add_field(name="#조식", value=f"{breakfast}\n\n", inline=False)
             result = ''
         else:
             embed.add_field(name="\n", value=f"\n", inline=False)
@@ -169,8 +169,8 @@ async def on_message(message):
             result = ''
             
         for row in dinner:
-            result += '\n'.join(row) + '\n'
-        embed.add_field(name="#석식", value=f"{result}\n\n", inline=False)
+            #result += '\n'.join(row) + '\n'
+        embed.add_field(name="#석식", value=f"{dinner}\n\n", inline=False)
         embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.\n\n", inline=False)
         embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.

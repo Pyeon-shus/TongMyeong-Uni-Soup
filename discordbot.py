@@ -29,7 +29,7 @@ async def on_ready():
     print("디스코드봇 ID:" + str(client.user.id))
     print("디스코드봇 버전:" + str(discord.__version__))
     print('------')
-    game = discord.Game('!학식 입력')
+    game = discord.Game('!학식 대기')
     await client.change_presence(status=discord.Status.online, activity=game)
 
 @client.event
@@ -95,44 +95,44 @@ async def on_message(message):
         #result = ''
         #for row in data:
         #    result += '\n'.join(row) + '\n'
-        embed = discord.Embed(title="**:fork_and_knife:오늘의 식단:fork_and_knife:**\n\n", description="{} 의 정보를 가져옵니다.".format(url),timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+        embed = discord.Embed(title="#:fork_and_knife:오늘의 식단:fork_and_knife:", description="{} 의 정보를 가져옵니다.".format(url),timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         result = ''
         for row in yangsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="**양식**\n\n", value=f"{result}", inline=False)
+        embed.add_field(name="#양식", value=f"{result}", inline=False)
         result = ''
         for row in myeonryu:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="**면류**\n\n", value=f"{result}", inline=False)
+        embed.add_field(name="#면류", value=f"{result}", inline=False)
         result = ''
         for row in bunsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="**분식**\n\n", value=f"{result}", inline=False)
+        embed.add_field(name="#분식", value=f"{result}", inline=False)
         result = ''
         for row in teukjeongsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="**특정식**\n\n", value=f"{result}", inline=False)
+        embed.add_field(name="#특정식", value=f"{result}", inline=False)
         result = ''
         for row in ddukbaegi:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)  
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="**뚝배기**\n\n", value=f"{result}", inline=False)
+        embed.add_field(name="#뚝배기", value=f"{result}", inline=False)
         result = ''
         for row in ilpum:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)    
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="**일품**\n\n", value=f"{result}", inline=False)
+        embed.add_field(name="#일품", value=f"{result}", inline=False)
         embed.set_footer(text="Bot Made by. Shus#7777, , 문의는 DM으로 부탁드립니다 💬")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.

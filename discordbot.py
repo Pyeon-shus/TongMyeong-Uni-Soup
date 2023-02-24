@@ -163,7 +163,7 @@ async def on_message(message):
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="#조식", value=f"{result}\n\n", inline=False)
             result = ''
-        elif
+        else:
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="#조식", value=f"오늘은 조식이 제공되지 않습니다\n\n", inline=False)
             result = ''

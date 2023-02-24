@@ -149,10 +149,8 @@ async def on_message(message):
                 detail = li.find('div', class_='detail')
                 row = detail.text.replace('\n', '').strip()
                 if course.text == '석식' and row not in dinner:
-                    row.append(course.text)
                     dinner.append(row)
                 elif course.text == '조식' and row not in breakfast:
-                    row.append(course.text)
                     breakfast.append(row)
 
         # 각각의 식사 종류에 해당하는 메뉴들을 출력합니다.
@@ -162,7 +160,7 @@ async def on_message(message):
         result = ''
         if breakfast:
             for row in breakfast:
-                #result += '\n'.join(row) + '\n'
+                result += '\n'.join(row)
                 embed.add_field(name="\n", value=f"\n", inline=False)
                 embed.add_field(name="#조식", value=f"{breakfast}\n\n", inline=False)
                 result = ''
@@ -172,7 +170,7 @@ async def on_message(message):
             result = ''
             
         for row in dinner:
-            #result += '\n'.join(row) + '\n'
+            result += '\n'.join(row)
             embed.add_field(name="#석식", value=f"{dinner}\n\n", inline=False)
             embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))

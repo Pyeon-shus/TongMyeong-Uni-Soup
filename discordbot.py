@@ -154,7 +154,7 @@ async def on_message(message):
 
         # 각각의 식사 종류에 해당하는 메뉴들을 출력합니다.
         
-         embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+        embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4916/4916579.png")
         result = ''
         if breakfast:

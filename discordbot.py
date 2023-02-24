@@ -99,22 +99,22 @@ async def on_message(message):
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         for row in yangsik:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="양식", value=f"{yangsik}", inline=False)
+        embed.add_field(name="양식", value=f"{result}", inline=False)
         for row in myeonryu:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="면류", value=f"{myeonryu}", inline=False)
+        embed.add_field(name="면류", value=f"{result}", inline=False)
         for row in bunsik:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="분식", value=f"{bunsik}", inline=False)
+        embed.add_field(name="분식", value=f"{result}", inline=False)
         for row in teukjeongsik:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="특정식", value=f"{teukjeongsik}", inline=False)
+        embed.add_field(name="특정식", value=f"{result}", inline=False)
         for row in ddukbaegi:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="뚝배기", value=f"{ddukbaegi}", inline=False)
+        embed.add_field(name="뚝배기", value=f"{result}", inline=False)
         for row in ilpum:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="일품", value=f"{ilpum}", inline=False)
+        embed.add_field(name="일품", value=f"{result}", inline=False)
         embed.set_footer(text="Bot Made by. Shus#7777_________________________________")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.

@@ -121,7 +121,7 @@ async def on_message(message):
         for row in ilpum:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="일품", value=f"{result}", inline=False)
-        embed.set_footer(text="Bot Made by. Shus#7777_______________________________________________________")
+        embed.set_footer(text="Bot Made by. Shus#7777, , 문의는 DM으로 부탁드립니다 💬")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
         #await channel.send(result)

@@ -40,7 +40,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('!학식'):
-        print(f'입력됨')
+        print(f'!학식 입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
         #user = message.mentions[1] # '!학식' 에서 유저정보를 user에 담는다.
@@ -68,34 +68,54 @@ async def on_message(message):
         for tr in table.find_all('tr'):
             th = tr.find('th')
             td = tr.find('td')
-
+            row = []
             if th and td:
                 if th.text == '양식':
-                    yangsik.append(td.text)
+                    row.append(td.text)
+                    yangsik.append(row)
                 elif th.text == '면류':
-                    myeonryu.append(td.text)
+                    row.append(td.text)
+                    myeonryu.append(row)
                 elif th.text == '분식':
-                    bunsik.append(td.text)
+                    row.append(td.text)
+                    bunsik.append(row)
                 elif th.text == '특정식':
-                    teukjeongsik.append(td.text)
+                    row.append(td.text)
+                    teukjeongsik.append(row)
                 elif th.text == '뚝배기':
-                    ddukbaegi.append(td.text)
+                    row.append(td.text)
+                    ddukbaegi.append(row)
                 elif th.text == '일품':
-                    ilpum.append(td.text)
+                    row.append(td.text)
+                    ilpum.append(row)
+                    
+                    
 
         #봇에 출력하기 위해 리스트를 문자열로 변환합니다.
-        #result = ''
+        result = ''
         #for row in data:
         #    result += '\n'.join(row) + '\n'
         embed = discord.Embed(title=":fork_and_knife:오늘의 식단:fork_and_knife:", description="{} 의 정보를 가져옵니다.".format(url),timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
+        for row in yangsik:
+            result += '\n'.join(row) + '\n'
         embed.add_field(name="양식", value=f"{yangsik}", inline=False)
+        for row in myeonryu:
+            result += '\n'.join(row) + '\n'
         embed.add_field(name="면류", value=f"{myeonryu}", inline=False)
+        for row in bunsik:
+            result += '\n'.join(row) + '\n'
         embed.add_field(name="분식", value=f"{bunsik}", inline=False)
+        for row in teukjeongsik:
+            result += '\n'.join(row) + '\n'
         embed.add_field(name="특정식", value=f"{teukjeongsik}", inline=False)
+        for row in ddukbaegi:
+            result += '\n'.join(row) + '\n'
         embed.add_field(name="뚝배기", value=f"{ddukbaegi}", inline=False)
+        for row in ilpum:
+            result += '\n'.join(row) + '\n'
         embed.add_field(name="일품", value=f"{ilpum}", inline=False)
-        embed.set_footer(text="Bot Made by. Shus#7777                                ")
+        embed.set_footer(text="Bot Made by. Shus#7777_________________________________")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
         #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
         #await channel.send(result)

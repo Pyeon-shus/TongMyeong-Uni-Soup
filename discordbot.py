@@ -84,9 +84,9 @@ async def on_message(message):
                     ilpum.append(td.text)
 
         #봇에 출력하기 위해 리스트를 문자열로 변환합니다.
-        result = ''
-        for row in data:
-            result += '\n'.join(row) + '\n'
+        #result = ''
+        #for row in data:
+        #    result += '\n'.join(row) + '\n'
         embed = discord.Embed(title=":fork_and_knife:오늘의 식단:fork_and_knife:", description="{} 의 정보를 가져옵니다.".format(url),timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         embed.add_field(name="양식", value=f"{yangsik}", inline=False)

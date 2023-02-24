@@ -101,7 +101,7 @@ async def on_message(message):
         for row in yangsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="#양식", value=f"{result\n}", inline=False)
+        embed.add_field(name="#양식", value=f"{result}\n", inline=False)
         result = ''
         for row in myeonryu:
             result += '\n'.join(row) + '\n'

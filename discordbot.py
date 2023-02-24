@@ -160,7 +160,7 @@ async def on_message(message):
         result = ''
         if breakfast:
             for row in breakfast:
-                result += '\n'.join(row)
+                result += .join(row)
                 embed.add_field(name="\n", value=f"\n", inline=False)
                 embed.add_field(name="#조식", value=f"{result}\n\n", inline=False)
                 result = ''
@@ -170,7 +170,7 @@ async def on_message(message):
             result = ''
             
         for row in dinner:
-            result += '\n'.join(row)
+            result += .join(row)
             embed.add_field(name="#석식", value=f"{result}\n\n", inline=False)
             embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))

@@ -101,27 +101,26 @@ async def on_message(message):
         for row in yangsik:
             result += '\n'.join(row) + '\n'
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="#양식", value=f"{result}\n", inline=False)
+        embed.add_field(name="#양식", value=f"{result}\n\n", inline=False)
         result = ''
         for row in myeonryu:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="#면류", value=f"{result}\n", inline=False)
+        embed.add_field(name="#면류", value=f"{result}\n\n", inline=False)
         result = ''
         for row in bunsik:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="#분식", value=f"{result}\n", inline=False)
+        embed.add_field(name="#분식", value=f"{result}\n\n", inline=False)
         result = ''
         for row in teukjeongsik:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="#특정식", value=f"{result}\n", inline=False)
+        embed.add_field(name="#특정식", value=f"{result}\n\n", inline=False)
         result = ''
         for row in ddukbaegi:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="#뚝배기", value=f"{result}\n", inline=False)
+        embed.add_field(name="#뚝배기", value=f"{result}\n\n", inline=False)
         result = ''
         for row in ilpum:
             result += '\n'.join(row) + '\n'
-        embed.add_field(name="\n", value=f"\n", inline=False)    
         embed.add_field(name="#일품", value=f"{result}", inline=False)
         embed.set_footer(text="Bot Made by. Shus#7777, , 문의는 DM으로 부탁드립니다 💬")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.

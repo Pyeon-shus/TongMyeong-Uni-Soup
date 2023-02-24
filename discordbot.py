@@ -27,7 +27,7 @@ async def on_ready():
     print("디스코드봇 ID:" + str(client.user.id))
     print("디스코드봇 버전:" + str(discord.__version__))
     print('------')
-    game = discord.Game('!학식**,** !숙식 대기')
+    game = discord.Game('!학식, !숙식 대기')
     await client.change_presence(status=discord.Status.online, activity=game)
 
 @client.event

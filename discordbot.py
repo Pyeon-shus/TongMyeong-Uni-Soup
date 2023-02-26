@@ -63,7 +63,7 @@ async def on_message(message):
         ddukbaegi = []
         ilpum = []
         
-        if tr:
+        if table:
             for tr in table.find_all('tr'):
                 th = tr.find('th')
                 td = tr.find('td')
@@ -125,7 +125,7 @@ async def on_message(message):
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
-        elif:
+        else:
             embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
             embed.add_field(name="⚠️등록된 식단메뉴가 없습니다⚠️", value=f"", inline=False)

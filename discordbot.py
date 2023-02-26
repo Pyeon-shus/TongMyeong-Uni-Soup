@@ -127,6 +127,7 @@ async def on_message(message):
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
+            print(f'!학식 결과가 정상 출력됨')
         else:
             embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
@@ -136,6 +137,7 @@ async def on_message(message):
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
+            print(f'!학식 결과가 정상 출력됨')
         
     elif message.content.startswith('!숙식'):
         channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
@@ -192,6 +194,7 @@ async def on_message(message):
                 await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
                 #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
                 #await channel.send(result)
+                print(f'!숙식 결과가 정상 출력됨')
         else:
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="\n", value=f"\n", inline=False)
@@ -202,6 +205,7 @@ async def on_message(message):
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
+            print(f'!숙식 결과가 정상 출력됨')
         
         
 try:

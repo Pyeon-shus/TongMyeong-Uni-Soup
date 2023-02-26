@@ -19,6 +19,8 @@ intents =discord.Intents.default()
 intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
+now = datetime.datetime.now()
+now_string = now.strftime("%Y-%m-%d")
 
 @client.event
 async def on_ready():
@@ -128,7 +130,8 @@ async def on_message(message):
         else:
             embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
-            embed.add_field(name="⚠️등록된 식단메뉴가 없습니다⚠️", value=f"", inline=False)
+            embed.add_field(name="\n", value=f"\n", inline=False)
+            embed.add_field(name="⚠️{}에 등록된 식단메뉴가 없습니다⚠️".format(now_string), value=f"", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.

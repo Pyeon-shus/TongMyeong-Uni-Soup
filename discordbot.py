@@ -133,11 +133,13 @@ async def on_message(message):
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="⚠️{}에 등록된 식단메뉴가 없습니다⚠️".format(now_string), value=f"", inline=False)
-            embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
+            embed.add_field(name=" ", value=f"식단 출처: {}\n\n".format(url), inline=False)
+            embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.)
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
-            print(f'정상 출력됨\n')
+            print(f'정상 출력됨\n')            
+            
         
     elif message.content.startswith('!숙식'):
         channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
@@ -189,8 +191,9 @@ async def on_message(message):
             for row in dinner:
                 result += ''.join(row)
                 embed.add_field(name="#석식", value=f"{result}\n\n", inline=False)
-                embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n", inline=False)
-                embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
+                mbed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n\n", inline=False)
+                embed.add_field(name=" ", value=f"식단 출처: {}\n\n".format(url), inline=False)
+                embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.)
                 await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
                 #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
                 #await channel.send(result)
@@ -200,8 +203,9 @@ async def on_message(message):
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="#조식", value=f"오늘은 석식이 제공되지 않습니다\n\n", inline=False)
             result = ''
-            embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n", inline=False)
-            embed.set_footer(text="Bot Made by. Shus#7777, 식단 출처: {}".format(url))
+            embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n\n\n", inline=False)
+            embed.add_field(name=" ", value=f"식단 출처: {}\n\n".format(url), inline=False)
+            embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.)
             await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)

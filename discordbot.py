@@ -134,7 +134,7 @@ async def on_message(message):
             embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
             embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="⚠️{}에 등록된 식단메뉴가 없습니다⚠️\n".format(now_string), value=f"", inline=False)
+            embed.add_field(name="⚠️{}에 등록된 식단메뉴가 없습니다⚠️".format(now_string), value=f"", inline=False)
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")

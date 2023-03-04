@@ -179,7 +179,6 @@ async def on_message(message):
             for row in breakfast:
                 result += ''.join(row)
                 embed.add_field(name="\n", value=f"\n", inline=False)
-                embed.add_field(name="\n", value=f"\n", inline=False)
                 embed.add_field(name="#조식", value=f"{result}\n\n", inline=False)
                 result = ''
         else:
@@ -200,7 +199,6 @@ async def on_message(message):
                 #await channel.send(result)
                 print(f'정상 출력됨\n')
         else:
-            embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="#조식", value=f"오늘은 석식이 제공되지 않습니다\n\n", inline=False)
             result = ''

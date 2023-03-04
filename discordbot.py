@@ -21,7 +21,7 @@ intents.members = True
 client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 now = datetime.datetime.now()
 now_string = now.strftime("%Y-%m-%d")
-tomorrow = now +  datetime.timedelta(days=2)
+tomorrow = now +  datetime.timedelta(days=1)
 tomo_string = tomorrow.strftime("%Y-%m-%d")
 
 

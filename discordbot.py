@@ -273,8 +273,7 @@ async def on_message(message):
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="😲많은 이용부탁 드립니다!😲".format(url), value=f"", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="#현제 실행중인 명령어".format(url), value=f"!소개, !식단 출처, !학식, !내일 학식,", inline=False)
-        embed.add_field(name="".format(url), value=f"!기숙사 식단 출처, !숙식,", inline=False)
+        embed.add_field(name="#현제 실행중인 명령어".format(url), value=f"!소개, !식단 출처, !학식, !내일 학식 ₩n!기숙사 식단 출처, !숙식", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
         await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.

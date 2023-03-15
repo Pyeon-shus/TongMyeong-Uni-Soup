@@ -406,21 +406,21 @@ async def on_message(message):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 
-async def my_background_task():
-    await client.wait_until_ready()
-    channel = client.get_channel(969983391183282258) # 출력할 채널 ID 입력
-    while True:
-        now = datetime.datetime.now()
-        if now.hour == 9 and now.minute == 0: # 매일 오전 9시
-            await channel.send(Today_Uni_Soup()) # 함수 실행
-        await asyncio.sleep(60) # 1분마다 반복
-
-client.loop.create_task(my_background_task())
+#async def my_background_task():
+#    await client.wait_until_ready()
+#    channel = client.get_channel(969983391183282258) # 출력할 채널 ID 입력
+#    while True:
+#        now = datetime.datetime.now()
+#        if now.hour == 9 and now.minute == 0: # 매일 오전 9시
+#            await channel.send(Today_Uni_Soup()) # 함수 실행
+#        await asyncio.sleep(60) # 1분마다 반복
+#
+#client.loop.create_task(my_background_task())
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
         
         
 try:
-    asyncio.run(client.start(TOKEN))
+    client.run(TOKEN)
 except discord.errors.LoginFailure as e:
     print("Improper token has been passed.")

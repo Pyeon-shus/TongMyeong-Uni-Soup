@@ -421,6 +421,6 @@ client.loop.create_task(my_background_task())
         
         
 try:
-    client.run(TOKEN)
+    asyncio.run(client.start(TOKEN))
 except discord.errors.LoginFailure as e:
     print("Improper token has been passed.")

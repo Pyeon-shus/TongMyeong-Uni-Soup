@@ -24,43 +24,10 @@ now_string = now.strftime("%Y-%m-%d")
 tomorrow = now +  datetime.timedelta(days=1)
 tomo_string = tomorrow.strftime("%Y-%m-%d")
 
-@tasks.loop(hours=24)
-async def send_message():
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    channel = client.get_channel(1234567890) # 출력할 채널의 ID를 입력합니다.
-    await channel.send(f"매일 오전 9시입니다! 현재 시각은 {now}입니다.")
+#------------------------------------------------------------------------------------------------------------------------------------------------
 
-@send_message.before_loop
-async def before_send_message():
-    await client.wait_until_ready()
-    now = datetime.datetime.now()
-    send_time = datetime.datetime(now.year, now.month, now.day, 9, 0, 0) # 출력할 시각을 입력합니다.
-    if send_time < now:
-        send_time += datetime.timedelta(days=1)
-    time_left = (send_time - now).seconds
-    await asyncio.sleep(time_left)
-
-send_message.start()
-
-@client.event
-async def on_ready():
-    print("디스코드 봇 로그인이 완료되었습니다.")
-    print("디스코드봇 이름:" + client.user.name)
-    print("디스코드봇 ID:" + str(client.user.id))
-    print("디스코드봇 버전:" + str(discord.__version__))
-    print('------')
-    game = discord.Game('!학식, !숙식 대기')
-    await client.change_presence(status=discord.Status.online, activity=game)
-
-@client.event
-async def on_message(message):
-    global channel
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('!학식'):
-        channel = client.get_channel(969983391183282258)# 출력할 채널 ID를 넣어주세요
-        print(f'!학식 입력됨')
+def Today_Uni_Soup():
+    print(f'!학식 입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
         #user = message.mentions[1] # '!학식' 에서 유저정보를 user에 담는다.
@@ -163,11 +130,10 @@ async def on_message(message):
             #await channel.send(result)
             print(f'정상 출력됨\n')
 
-#------------------------------------------------------------------------------------------------------------------------------------------------            
-            
-    elif message.content.startswith('!내일 학식'):
-        channel = client.get_channel(969983391183282258)# 출력할 채널 ID를 넣어주세요
-        print(f'!내일 학식 입력됨')
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
+def Tomorrow_Uni_Soup():
+    print(f'!내일 학식 입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
         #user = message.mentions[1] # '!학식' 에서 유저정보를 user에 담는다.
@@ -272,6 +238,37 @@ async def on_message(message):
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
             print(f'정상 출력됨\n')
+    
+#------------------------------------------------------------------------------------------------------------------------------------------------    
+            
+
+@client.event
+async def on_ready():
+    print("디스코드 봇 로그인이 완료되었습니다.")
+    print("디스코드봇 이름:" + client.user.name)
+    print("디스코드봇 ID:" + str(client.user.id))
+    print("디스코드봇 버전:" + str(discord.__version__))
+    print('------')
+    game = discord.Game('!학식, !숙식 대기')
+    await client.change_presence(status=discord.Status.online, activity=game)
+
+@client.event
+async def on_message(message):
+    global channel
+    if message.author == client.user:
+        return
+    
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
+    if message.content.startswith('!학식'):
+        channel = client.get_channel(969983391183282258)# 출력할 채널 ID를 넣어주세요
+        Today_Uni_Soup()
+
+#------------------------------------------------------------------------------------------------------------------------------------------------            
+            
+    elif message.content.startswith('!내일 학식'):
+        channel = client.get_channel(969983391183282258)# 출력할 채널 ID를 넣어주세요
+        Tomorrow_Uni_Soup()
             
 #------------------------------------------------------------------------------------------------------------------------------------------------
            
@@ -417,6 +414,21 @@ async def on_message(message):
             #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
             #await channel.send(result)
             print(f'정상 출력됨\n')
+            
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
+async def my_background_task():
+    await client.wait_until_ready()
+    channel = client.get_channel(969983391183282258) # 출력할 채널 ID 입력
+    while True:
+        now = datetime.datetime.now()
+        if now.hour == 9 and now.minute == 0: # 매일 오전 9시
+            await channel.send(Today_Uni_Soup()) # 함수 실행
+        await asyncio.sleep(60) # 1분마다 반복
+
+client.loop.create_task(my_background_task())
+
+#------------------------------------------------------------------------------------------------------------------------------------------------
         
         
 try:

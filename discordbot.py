@@ -5,7 +5,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-import discord, asyncio, datetime, pytz
+import discord, asyncio, datetime, pytz, tasks
 from discord.ext import commands
 from discord.utils import get
 from discord import Member
@@ -24,6 +24,23 @@ now_string = now.strftime("%Y-%m-%d")
 tomorrow = now +  datetime.timedelta(days=1)
 tomo_string = tomorrow.strftime("%Y-%m-%d")
 
+@tasks.loop(hours=24)
+async def send_message():
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    channel = client.get_channel(1234567890) # 출력할 채널의 ID를 입력합니다.
+    await channel.send(f"매일 오전 9시입니다! 현재 시각은 {now}입니다.")
+
+@send_message.before_loop
+async def before_send_message():
+    await client.wait_until_ready()
+    now = datetime.datetime.now()
+    send_time = datetime.datetime(now.year, now.month, now.day, 9, 0, 0) # 출력할 시각을 입력합니다.
+    if send_time < now:
+        send_time += datetime.timedelta(days=1)
+    time_left = (send_time - now).seconds
+    await asyncio.sleep(time_left)
+
+send_message.start()
 
 @client.event
 async def on_ready():

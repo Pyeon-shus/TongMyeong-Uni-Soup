@@ -5,7 +5,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-import discord, asyncio, datetime, pytz, tasks
+import discord, asyncio, datetime, pytz
 from discord.ext import commands
 from discord.utils import get
 from discord import Member

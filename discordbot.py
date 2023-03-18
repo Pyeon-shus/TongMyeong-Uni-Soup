@@ -102,7 +102,7 @@ async def on_message(message):
             #result = ''
             #for row in data:
             #    result += '\n'.join(row) + '\n'
-            embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+            embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
             result = ''
             for row in yangsik:
@@ -212,7 +212,7 @@ async def on_message(message):
             #result = ''
             #for row in data:
             #    result += '\n'.join(row) + '\n'
-            embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+            embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
             result = ''
             for row in yangsik:
@@ -247,7 +247,7 @@ async def on_message(message):
             #await channel.send(result)
             print(f'정상 출력됨\n')
         else:
-            embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+            embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name="⚠️{}에 등록된 식단메뉴가 없습니다⚠️".format(tomo_string), value=f"", inline=False)
@@ -271,7 +271,7 @@ async def on_message(message):
         #await channel.send ("{} | {}님이 '!학식'을 입력하셨습니다.".format(channel.author, channel.author.mention)) # 작성된 채널에 메세지 출력
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
  
-        embed = discord.Embed(title=":fork_and_knife:학식이 소개:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+        embed = discord.Embed(title=":fork_and_knife:학식이 소개:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="😲많은 이용부탁 드립니다!😲".format(url), value=f"", inline=False)
@@ -296,7 +296,7 @@ async def on_message(message):
         #await channel.send ("{} | {}님이 '!학식'을 입력하셨습니다.".format(channel.author, channel.author.mention)) # 작성된 채널에 메세지 출력
         url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
 
-        embed = discord.Embed(title=":fork_and_knife:식단 출처:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+        embed = discord.Embed(title=":fork_and_knife:식단 출처:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="😲식단 출처: {}😲".format(url), value=f"", inline=False)
@@ -320,7 +320,7 @@ async def on_message(message):
         #await channel.send ("{} | {}님이 '!학식'을 입력하셨습니다.".format(channel.author, channel.author.mention)) # 작성된 채널에 메세지 출력
         url = 'https://www.tu.ac.kr/dormitory/index.do#nohref'
 
-        embed = discord.Embed(title=":fork_and_knife:식단 출처:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+        embed = discord.Embed(title=":fork_and_knife:식단 출처:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="😲식단 출처: {}😲".format(url), value=f"", inline=False)
@@ -364,7 +364,7 @@ async def on_message(message):
 
         # 각각의 식사 종류에 해당하는 메뉴들을 출력합니다.
         
-        embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x96C81E)
+        embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4916/4916579.png")
         result = ''
         if breakfast:

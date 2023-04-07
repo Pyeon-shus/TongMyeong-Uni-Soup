@@ -339,8 +339,8 @@ async def on_message(message):
 
             
     elif message.content.startswith('!숙식'):
-        channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
-        #channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
+        #channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
+        channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
         import requests
         from bs4 import BeautifulSoup
@@ -391,7 +391,7 @@ async def on_message(message):
                         embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
                         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4916/4916579.png")
                         embed.add_field(name="\n", value=f"\n", inline=False)
-                        embed.add_field(name="#조식", value=f"\n", inline=False)
+                        #embed.add_field(name="#조식", value=f"\n", inline=False)
 
                         # 메뉴 출력
                         for menu in menu_list:
@@ -408,6 +408,7 @@ async def on_message(message):
                                 #    embed.add_field(name="#석식", value=f"{menu_}\n\n", inline=False)
                                 embed.add_field(name="", value=f"{menu_text}\n\n", inline=False)
                                 
+                        embed.add_field(name="\n", value=f"\n", inline=False)        
                         embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)
                         embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)

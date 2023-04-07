@@ -400,18 +400,18 @@ async def on_message(message):
                             for item in menu_items:
                                 menu_text = item.text.strip()
                                 time_meal, menu_ = menu_text.split(":")
-                                if time_meal = "조식","A코스","B코스"
+                                if time_meal in ["조식", "A코스", "B코스"]:
                                     embed.add_field(name="", value=f"{menu_}\n\n", inline=False)
-                                elif time_meal = "석식"
+                                elif time_meal in ["석식"]:
                                     embed.add_field(name="#석식", value=f"{menu_}\n\n", inline=False)
-                                    embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
-                                    embed.add_field(name="\n", value=f"\n", inline=False)
-                                    embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
-                                    embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
-                                    await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
-                                    #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
-                                    #await channel.send(result)
-                                    print(f'정상 출력됨\n')
+                            embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
+                            embed.add_field(name="\n", value=f"\n", inline=False)
+                            embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
+                            embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
+                            await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
+                            #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
+                            #await channel.send(result)
+                            print(f'정상 출력됨\n')
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 

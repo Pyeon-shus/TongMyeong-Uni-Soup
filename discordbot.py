@@ -335,74 +335,75 @@ async def on_message(message):
 
             
     elif message.content.startswith('!숙식'):
-        channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
+        channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
+        #channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
-        # 웹페이지를 요청합니다.
-        url = 'https://www.tu.ac.kr/dormitory/index.do#nohref'
-        req = requests.get(url)
+        import requests
+        from bs4 import BeautifulSoup
+        import datetime
 
-        # HTML을 분석합니다.
-        soup = BeautifulSoup(req.text, 'html.parser')
+        # 크롤링할 URL
+        url = "https://www.tu.ac.kr/dormitory/sub06_06.do?mode=wList"
 
-        # 필요한 데이터를 가져옵니다.
-        tabs_con_wrap = soup.find('div', class_='tabs-con-wrap')
+        # 크롤링할 페이지 요청
+        res = requests.get(url)
 
-        # 각 식사 종류에 해당하는 메뉴를 따로 저장합니다.
-        dinner = []
-        breakfast = []
+        # 페이지 파싱
+        soup = BeautifulSoup(res.text, "html.parser")
 
-        for tabs_con in tabs_con_wrap.find_all('div', class_='tabs-con'):
-            for li in tabs_con.find_all('li', class_='item'):
-                
-                course = li.find('div', class_='course')
-                detail = li.find('div', class_='detail')
-                row = detail.text.replace('\n', '').strip()
-                if course.text == '석식' and row not in dinner:
-                    dinner.append(row)
-                elif course.text == '조식' and row not in breakfast:
-                    breakfast.append(row)
+        # 학식 메뉴가 있는 박스 찾기
+        box_list = soup.find_all("div", {"class": "b-cal-content-box no-list"})
 
-        # 각각의 식사 종류에 해당하는 메뉴들을 출력합니다.
-        
-        embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
-        embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4916/4916579.png")
-        result = ''
-        if breakfast:
-            for row in breakfast:
-                result += ''.join(row)
-                embed.add_field(name="\n", value=f"\n", inline=False)
-                embed.add_field(name="#조식", value=f"{result}\n\n", inline=False)
-                result = ''
-        else:
-            embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="#조식", value=f"오늘은 조식이 제공되지 않습니다\n\n", inline=False)
-            result = ''
-            
-        if  dinner :  
-            for row in dinner:
-                result += ''.join(row)
-                embed.add_field(name="#석식", value=f"{result}\n\n", inline=False)
-                embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
-                embed.add_field(name="\n", value=f"\n", inline=False)
-                embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
-                embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
-                await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
-                #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
-                #await channel.send(result)
-                print(f'정상 출력됨\n')
-        else:
-            embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="#조식", value=f"오늘은 석식이 제공되지 않습니다\n\n", inline=False)
-            result = ''
-            embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
-            embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
-            embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
-            await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
-            #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
-            #await channel.send(result)
-            print(f'정상 출력됨\n')
+        # 현재 날짜 구하기
+        today = datetime.datetime.now().strftime("%Y.%m.%d")
+
+        # 박스마다 학식 메뉴 출력
+        for box in box_list:
+            # 날짜 추출
+            date_box = box.find("p", {"class": "b-cal-date"})
+            date_value = ""
+            if date_box:
+                date_text = date_box.find("span").text.strip()
+                date_value = date_text.split("(")[0]
+
+            # 날짜 정보와 현재 날짜 비교
+            if date_value == today:
+                # 학식 메뉴 추출
+                menu_list = box.find_all("ul", {"class": "b-cal-undergrad"})
+                # 박스마다 학식 메뉴 출력
+                for box in box_list:
+                    # 날짜 추출
+                    date_box = box.find("p", {"class": "b-cal-date"})
+                    date_value = ""
+                    if date_box:
+                        date_text = date_box.find("span").text.strip()
+                        date_value = date_text.split("(")[0]
+
+                    # 날짜 정보와 현재 날짜 비교
+                    if date_value == today:
+                        # 학식 메뉴 추출
+                        menu_list = box.find_all("ul", {"class": "b-cal-undergrad"})
+
+                        # 메뉴 출력
+                        for menu in menu_list:
+                            # 메뉴 항목 추출
+                            menu_items = menu.find_all("li")
+                            # 메뉴 출력
+                            for item in menu_items:
+                                menu_text = item.text.strip()
+                                # embed출력
+                                embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
+                                embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4916/4916579.png")
+                                embed.add_field(name="\n", value=f"\n", inline=False)
+                                embed.add_field(name="#식단", value=f"{menu_text}\n\n", inline=False)
+                                embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
+                                embed.add_field(name="\n", value=f"\n", inline=False)
+                                embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
+                                embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
+                                await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
+                                #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
+                                #await channel.send(result)
+                                print(f'정상 출력됨\n')
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 

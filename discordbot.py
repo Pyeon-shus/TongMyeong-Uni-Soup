@@ -20,6 +20,10 @@ intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 now = datetime.datetime.now()
+
+local_time = now
+kr_tz = pytz.timezone('Asia/Seoul')
+kr_time = local_time.astimezone(kr_tz)
 now_string = now.strftime("%Y-%m-%d")
 tomorrow = now +  datetime.timedelta(days=1)
 tomo_string = tomorrow.strftime("%Y-%m-%d")
@@ -355,7 +359,7 @@ async def on_message(message):
         box_list = soup.find_all("div", {"class": "b-cal-content-box no-list"})
 
         # 현재 날짜 구하기
-        today = datetime.datetime.now().strftime("%Y.%m.%d")
+        today = kr_time.strftime("%Y.%m.%d")
 
         # 박스마다 학식 메뉴 출력
         for box in box_list:

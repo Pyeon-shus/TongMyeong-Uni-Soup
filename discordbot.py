@@ -401,11 +401,13 @@ async def on_message(message):
                             
                             for item in menu_items:
                                 menu_text = item.text.strip()
-                                time_meal, menu_ = menu_text.split(":")
-                                if time_meal in ["조식", "A코스", "B코스"]:
-                                    embed.add_field(name="", value=f"{menu_}\n\n", inline=False)
-                                elif time_meal in ["석식"]:
-                                    embed.add_field(name="#석식", value=f"{menu_}\n\n", inline=False)
+                                #time_meal, menu_ = menu_text.split(":")
+                                #if time_meal in ["조식", "A코스", "B코스"]:
+                                    #embed.add_field(name="", value=f"{menu_}\n\n", inline=False)
+                                #elif time_meal in ["석식"]:
+                                #    embed.add_field(name="#석식", value=f"{menu_}\n\n", inline=False)
+                                embed.add_field(name="", value=f"{menu_text}\n\n", inline=False)
+                                
                         embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)
                         embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)

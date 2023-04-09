@@ -424,7 +424,7 @@ async def on_message(message):
                         if len(breakfast_menu) > 0:
                             for menu in breakfast_menu:
                                 menu += '\n'.join(breakfast_menu) + '\n'
-                            embed.add_field(name="#조식", value=f"{menu}\n\n", inline=False)
+                            embed.add_field(name="#조식", value=f"{breakfast_menu_str}\n\n", inline=False)
                         else:
                             embed.add_field(name="#조식", value=f"오늘 조식 메뉴가 없습니다.\n\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)

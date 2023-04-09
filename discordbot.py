@@ -419,18 +419,16 @@ async def on_message(message):
                                 elif menu_split[0] == "석식 ":
                                     if len(dinner_menu_str) > 0:
                                         dinner_menu_str += "\n"
-                                    dinner_menu_str += menu_split[1]
+                                    breakfast_menu_str += menu_split[1]
                                     
-                        if len(breakfast_menu) > 0:
-                            for menu in breakfast_menu:
-                                menu += '\n'.join(breakfast_menu) + '\n'
+                        if len(breakfast_menu_str) > 0:
                             embed.add_field(name="#조식", value=f"{breakfast_menu_str}\n\n", inline=False)
                         else:
                             embed.add_field(name="#조식", value=f"오늘 조식 메뉴가 없습니다.\n\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)
                         
-                        if len(dinner_menu) > 0:
-                            embed.add_field(name="#석식", value=f"{dinner_menu}\n\n", inline=False)
+                        if len(breakfast_menu_str) > 0:
+                            embed.add_field(name="#석식", value=f"{breakfast_menu_str}\n\n", inline=False)
                         else:
                             embed.add_field(name="#석식", value=f"오늘 석식 메뉴가 없습니다.\n\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)

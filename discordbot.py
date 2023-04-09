@@ -427,8 +427,8 @@ async def on_message(message):
                             embed.add_field(name="#조식", value=f"오늘 조식 메뉴가 없습니다.\n\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)
                         
-                        if len(breakfast_menu_str) > 0:
-                            embed.add_field(name="#석식", value=f"{breakfast_menu_str}\n\n", inline=False)
+                        if len(dinner_menu_str) > 0:
+                            embed.add_field(name="#석식", value=f"{dinner_menu_str}\n\n", inline=False)
                         else:
                             embed.add_field(name="#석식", value=f"오늘 석식 메뉴가 없습니다.\n\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)

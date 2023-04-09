@@ -339,8 +339,8 @@ async def on_message(message):
 
             
     elif message.content.startswith('!숙식'):
-        #channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
-        channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
+        channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
+        #channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
         import requests
         from bs4 import BeautifulSoup
@@ -418,7 +418,6 @@ async def on_message(message):
                                     breakfast_menu_str += (" " + menu_text)
                                 elif menu_split[0] == "석식 ":
                                     if len(dinner_menu_str) > 0:
-                                        dinner_menu_str += "\n"
                                     breakfast_menu_str += menu_split[1]
                                     
                         if len(breakfast_menu_str) > 0:

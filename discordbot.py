@@ -360,6 +360,10 @@ async def on_message(message):
 
         # 현재 날짜 구하기
         today = kr_time.strftime("%Y.%m.%d")
+        
+        # 조식 메뉴와 석식 메뉴를 저장할 문자열
+        breakfast_menu_str = ""
+        dinner_menu_str = ""
 
         # 박스마다 학식 메뉴 출력
         for box in box_list:
@@ -391,25 +395,47 @@ async def on_message(message):
                         embed = discord.Embed(title=":fork_and_knife:오늘의 숙식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
                         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4916/4916579.png")
                         embed.add_field(name="\n", value=f"\n", inline=False)
-                        #embed.add_field(name="#조식", value=f"\n", inline=False)
 
                         # 메뉴 출력
                         for menu in menu_list:
                             # 메뉴 항목 추출
                             menu_items = menu.find_all("li")
                             # 메뉴 출력
-                            
                             for item in menu_items:
                                 menu_text = item.text.strip()
-                                #time_meal, menu_ = menu_text.split(":")
-                                #if time_meal in ["조식", "A코스", "B코스"]:
-                                    #embed.add_field(name="", value=f"{menu_}\n\n", inline=False)
-                                #elif time_meal in ["석식"]:
-                                #    embed.add_field(name="#석식", value=f"{menu_}\n\n", inline=False)
-                                embed.add_field(name="", value=f"{menu_text}\n\n", inline=False)
-                                
-                        embed.add_field(name="\n", value=f"\n", inline=False)        
-                        embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
+
+                                # ":" 기준으로 분리
+                                menu_split = menu_text.split(":")
+
+                                # 분리된 항목이 조식/석식인 경우
+                                if menu_split[0] == "조식 ":
+                                    if len(breakfast_menu_str) > 0:
+                                        breakfast_menu_str += "\n"
+                                    breakfast_menu_str += menu_split[1]
+                                elif menu_split[0] == "A코스 " or menu_split[0] == "B코스 ":
+                                    if len(breakfast_menu_str) > 0:
+                                        breakfast_menu_str += "\n"
+                                    breakfast_menu_str += (" " + menu_text)
+                                elif menu_split[0] == "석식 ":
+                                    if len(dinner_menu_str) > 0:
+                                        dinner_menu_str += "\n"
+                                    dinner_menu_str += menu_split[1]
+                                    
+                        if len(breakfast_menu) > 0:
+                            for menu in breakfast_menu:
+                                menu += '\n'.join(breakfast_menu) + '\n'
+                            embed.add_field(name="#조식", value=f"{menu}\n\n", inline=False)
+                        else:
+                            embed.add_field(name="#조식", value=f"오늘 조식 메뉴가 없습니다.\n\n", inline=False)
+                        embed.add_field(name="\n", value=f"\n", inline=False)
+                        
+                        if len(dinner_menu) > 0:
+                            embed.add_field(name="#석식", value=f"{dinner_menu}\n\n", inline=False)
+                        else:
+                            embed.add_field(name="#석식", value=f"오늘 석식 메뉴가 없습니다.\n\n", inline=False)
+                        embed.add_field(name="\n", value=f"\n", inline=False)
+                        
+                        #embed.add_field(name=" ", value=f"⚠️!숙식은 현재 불안정 합니다 차후 수정할 계획입니다.⚠️\n", inline=False)
                         embed.add_field(name="\n", value=f"\n", inline=False)
                         embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
                         embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")

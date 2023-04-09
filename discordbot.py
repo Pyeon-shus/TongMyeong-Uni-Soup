@@ -288,31 +288,6 @@ async def on_message(message):
         #await channel.send(result)
         print(f'정상 출력됨\n')
 
-#------------------------------------------------------------------------------------------------------------------------------------------------
-
-    elif message.content.startswith('!introduce'):
-        channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
-        print(f'!소개 입력됨')
-        #입력한 채팅을 삭제한다.
-        #await message.delete()
-        #user = message.mentions[1] # '!학식' 에서 유저정보를 user에 담는다.
-        #await channel.send("{} | {} 님이 '!학식'을 입력하셨습니다.".format(user.author, user.mention)) # 작성된 채널에 메세지를 출력한다.
-        #await channel.send ("{} | {}님이 '!학식'을 입력하셨습니다.".format(channel.author, channel.author.mention)) # 작성된 채널에 메세지 출력
-        url = 'https://www.tu.ac.kr/tuhome/diet.do?sch'
- 
-        embed = discord.Embed(title=":fork_and_knife:학식이 소개:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
-        embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
-        embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="😲많은 이용부탁 드립니다!😲".format(url), value=f"", inline=False)
-        embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="#현제 실행중인 명령어".format(url), value=f"!소개, !식단 출처, !학식, !내일 학식 \n!기숙사 식단 출처, !숙식", inline=False)
-        embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
-        await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
-        #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
-        #await channel.send(result)
-        print(f'정상 출력됨\n')
-
 #------------------------------------------------------------------------------------------------------------------------------------------------ 
            
     elif message.content.startswith('!식단 출처'):
@@ -347,7 +322,7 @@ async def on_message(message):
         #user = message.mentions[1] # '!학식' 에서 유저정보를 user에 담는다.
         #await channel.send("{} | {} 님이 '!학식'을 입력하셨습니다.".format(user.author, user.mention)) # 작성된 채널에 메세지를 출력한다.
         #await channel.send ("{} | {}님이 '!학식'을 입력하셨습니다.".format(channel.author, channel.author.mention)) # 작성된 채널에 메세지 출력
-        url = 'https://www.tu.ac.kr/dormitory/index.do#nohref'
+        url = 'https://www.tu.ac.kr/dormitory/sub06_06.do?mode=wList'
 
         embed = discord.Embed(title=":fork_and_knife:식단 출처:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")

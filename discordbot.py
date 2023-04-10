@@ -108,31 +108,56 @@ async def on_message(message):
             #    result += '\n'.join(row) + '\n'
             embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
-            result = ''
-            for row in yangsik:
-                result += '\n'.join(row) + '\n'
             embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="#양식", value=f"{result}\n\n", inline=False)
             result = ''
-            for row in myeonryu:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#면류", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in bunsik:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#분식", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in teukjeongsik:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#특정식", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in ddukbaegi:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#뚝배기", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in ilpum:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#일품", value=f"{result}\n", inline=False)
+            
+            if len(yangsik) > 0:
+                for row in yangsik:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#양식", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(myeonryu) > 0:
+                for row in myeonryu:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#면류", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(bunsik) > 0:
+                for row in bunsik:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#분식", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(teukjeongsik) > 0:
+                for row in teukjeongsik:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#특정식", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(ddukbaegi) > 0:
+                for row in ddukbaegi:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#뚝배기", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(ilpum) > 0:
+                for row in ilpum:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#일품", value=f"{result}\n", inline=False)
+            else:
+                result = ''
+            
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
@@ -218,31 +243,56 @@ async def on_message(message):
             #    result += '\n'.join(row) + '\n'
             embed = discord.Embed(title=":fork_and_knife:오늘의 학식:fork_and_knife:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
             embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/4474/4474873.png")
-            result = ''
-            for row in yangsik:
-                result += '\n'.join(row) + '\n'
             embed.add_field(name="\n", value=f"\n", inline=False)
-            embed.add_field(name="#양식", value=f"{result}\n\n", inline=False)
             result = ''
-            for row in myeonryu:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#면류", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in bunsik:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#분식", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in teukjeongsik:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#특정식", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in ddukbaegi:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#뚝배기", value=f"{result}\n\n", inline=False)
-            result = ''
-            for row in ilpum:
-                result += '\n'.join(row) + '\n'
-            embed.add_field(name="#일품", value=f"{result}\n", inline=False)
+            
+            if len(yangsik) > 0:
+                for row in yangsik:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#양식", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(myeonryu) > 0:
+                for row in myeonryu:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#면류", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(bunsik) > 0:
+                for row in bunsik:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#분식", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(teukjeongsik) > 0:
+                for row in teukjeongsik:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#특정식", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(ddukbaegi) > 0:
+                for row in ddukbaegi:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#뚝배기", value=f"{result}\n\n", inline=False)
+                result = ''
+            else:
+                result = ''
+                
+            if len(ilpum) > 0:
+                for row in ilpum:
+                    result += '\n'.join(row) + '\n'
+                embed.add_field(name="#일품", value=f"{result}\n", inline=False)
+            else:
+                result = ''
+                
             embed.add_field(name="\n", value=f"\n", inline=False)
             embed.add_field(name=" ", value=f"식단 출처: {url}\n\n", inline=False)
             embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")

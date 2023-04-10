@@ -392,9 +392,9 @@ async def on_message(message):
         #channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
         channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
-        import requests
-        from bs4 import BeautifulSoup
-        import datetime
+        #import requests
+        #from bs4 import BeautifulSoup
+        #import datetime
 
         # 크롤링할 URL
         url = "https://www.tu.ac.kr/dormitory/sub06_06.do?mode=wList"

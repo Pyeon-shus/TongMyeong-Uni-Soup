@@ -386,11 +386,10 @@ async def on_message(message):
         print(f'정상 출력됨\n')
  
 #------------------------------------------------------------------------------------------------------------------------------------------------            
-
             
     elif message.content.startswith('!숙식'):
-        #channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
-        channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
+        channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
+        #channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
         #import requests
         #from bs4 import BeautifulSoup
@@ -407,7 +406,7 @@ async def on_message(message):
 
         # 학식 메뉴가 있는 박스 찾기
         box_list = soup.find_all("div", {"class": "b-cal-content-box no-list"})
-
+        
         # 현재 날짜 구하기
         today = kr_time.strftime("%Y.%m.%d")
         

@@ -388,9 +388,8 @@ async def on_message(message):
         #channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
         channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
-        local_time = now
         kr_tz = pytz.timezone('Asia/Seoul')
-        kr_time = local_time.astimezone(kr_tz)
+        kr_time = datetime.datetime.now(tz=pytz.utc).astimezone(kr_tz)
 
         # 크롤링할 URL
         url = "https://www.tu.ac.kr/dormitory/sub06_06.do?mode=wList"

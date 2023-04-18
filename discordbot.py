@@ -391,9 +391,9 @@ async def on_message(message):
         #channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
         channel = client.get_channel(620986130153603092)# 출력할 채널 ID를 넣어주세요
         print(f'!숙식 입력됨')
-        #import requests
-        #from bs4 import BeautifulSoup
-        #import datetime
+        local_time = now
+        kr_tz = pytz.timezone('Asia/Seoul')
+        kr_time = local_time.astimezone(kr_tz)
 
         # 크롤링할 URL
         url = "https://www.tu.ac.kr/dormitory/sub06_06.do?mode=wList"
@@ -408,7 +408,7 @@ async def on_message(message):
         box_list = soup.find_all("div", {"class": "b-cal-content-box no-list"})
         
         # 현재 날짜 구하기
-        today = kr_time.strftime("%Y.%m.%d")
+        today_s = kr_time.strftime("%Y.%m.%d")
         
         # 조식 메뉴와 석식 메뉴를 저장할 문자열
         breakfast_menu_str = ""
@@ -424,7 +424,7 @@ async def on_message(message):
                 date_value = date_text.split("(")[0]
 
             # 날짜 정보와 현재 날짜 비교
-            if date_value == today:
+            if date_value == today_s:
                 # 학식 메뉴 추출
                 menu_list = box.find_all("ul", {"class": "b-cal-undergrad"})
                        
@@ -454,7 +454,9 @@ async def on_message(message):
                             if len(dinner_menu_str) > 0:
                                 dinner_menu_str += "\n"
                             dinner_menu_str += menu_split[1]
-                                    
+
+        embed.add_field(name=f"{today_s}숙식", value=f"\n", inline=False)
+        embed.add_field(name="\n", value=f"\n", inline=False)               
         if len(breakfast_menu_str) > 0:
             embed.add_field(name="#조식", value=f"{breakfast_menu_str}\n\n", inline=False)
         else:

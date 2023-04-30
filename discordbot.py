@@ -37,12 +37,12 @@ async def on_ready():
     print('------')
     game = discord.Game('!학식, !숙식 대기')
     await client.change_presence(status=discord.Status.online, activity=game)
-    while True:
-        # 스케줄러를 실행할 때도 한국 시간으로 설정합니다
-        Sc_now = datetime.now(KST)
-        print(f"현제 시각은 {Sc_now.hour}시 {Sc_now.minute}분 입니다.")
-        schedule.run_pending()
-        time.sleep(1)
+#    while True:
+#        # 스케줄러를 실행할 때도 한국 시간으로 설정합니다
+#        Sc_now = datetime.now(KST)
+#        print(f"현제 시각은 {Sc_now.hour}시 {Sc_now.minute}분 입니다.")
+#        schedule.run_pending()
+#        time.sleep(1)
 
 #@client.event
 #async def on_message(message):

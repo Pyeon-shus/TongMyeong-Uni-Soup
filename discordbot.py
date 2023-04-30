@@ -44,11 +44,11 @@ async def on_ready():
 #        schedule.run_pending()
 #        time.sleep(1)
 
-#@client.event
-#async def on_message(message):
-#    global channel
-#    if message.author == client.user:
-#       return
+@client.event
+async def on_message(message):
+    global channel
+    if message.author == client.user:
+       return
     
 #------------------------------------------------------------------------------------------------------------------------------------------------
 

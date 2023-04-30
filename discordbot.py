@@ -482,13 +482,13 @@ async def on_message(message):
         print(f'정상 출력됨\n')
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
-def send_message():
-    channel = client.get_channel(1092242713279201280)
-    message = "매일 정해진 시간에 보낼 메시지를 여기에 입력하세요"
-    channel.send(message)
+#def send_message():
+#    channel = client.get_channel(1092242713279201280)
+#    message = "매일 정해진 시간에 보낼 메시지를 여기에 입력하세요"
+#    channel.send(message)
 
 # 매일 정해진 시간에 send_message 함수를 실행합니다
-schedule.every().day.at("02:30").do(send_message)
+#schedule.every().day.at("02:30").do(send_message)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
         

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 import requests
 from bs4 import BeautifulSoup
-import schedule
+#import schedule
 
 import discord, asyncio, datetime, pytz
 from discord.ext import commands
@@ -44,11 +44,11 @@ async def on_ready():
         schedule.run_pending()
         time.sleep(1)
 
-@client.event
-async def on_message(message):
-    global channel
-    if message.author == client.user:
-        return
+#@client.event
+#async def on_message(message):
+#    global channel
+#    if message.author == client.user:
+#       return
     
 #------------------------------------------------------------------------------------------------------------------------------------------------
 

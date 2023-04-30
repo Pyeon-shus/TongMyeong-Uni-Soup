@@ -20,10 +20,13 @@ intents =discord.Intents.default()
 intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
+
+kr_tz = pytz.timezone('Asia/Seoul')
+kr_time = datetime.datetime.now(tz=pytz.utc).astimezone(kr_tz)
 now = datetime.datetime.now()
 
-now_string = now.strftime("%Y-%m-%d")
-tomorrow = now +  datetime.timedelta(days=1)
+now_string = kr_time.strftime("%Y.%m.%d")
+tomorrow = kr_time +  datetime.timedelta(days=1)
 tomo_string = tomorrow.strftime("%Y-%m-%d")
     
 #------------------------------------------------------------------------------------------------------------------------------------------------    

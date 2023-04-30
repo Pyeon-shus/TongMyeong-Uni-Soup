@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import requests
 from bs4 import BeautifulSoup
+import schedule
 
 import discord, asyncio, datetime, pytz
 from discord.ext import commands
@@ -487,7 +488,7 @@ def send_message():
     channel.send(message)
 
 # 매일 정해진 시간에 send_message 함수를 실행합니다
-schedule.every().day.at("05:04").do(send_message)
+schedule.every().day.at("02:24").do(send_message)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
         

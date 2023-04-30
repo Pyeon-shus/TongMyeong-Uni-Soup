@@ -40,7 +40,7 @@ async def on_ready():
     while True:
         # 스케줄러를 실행할 때도 한국 시간으로 설정합니다
         Sc_now = datetime.now(KST)
-        print(f"Now it's {Sc_now.hour}:{Sc_now.minute}")
+        print(f"현제 시각은 {Sc_now.hour}시 {Sc_now.minute}분 입니다.")
         schedule.run_pending()
         time.sleep(1)
 
@@ -488,7 +488,7 @@ def send_message():
     channel.send(message)
 
 # 매일 정해진 시간에 send_message 함수를 실행합니다
-schedule.every().day.at("02:24").do(send_message)
+schedule.every().day.at("02:30").do(send_message)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
         

@@ -36,6 +36,12 @@ async def on_ready():
     print('------')
     game = discord.Game('!학식, !숙식 대기')
     await client.change_presence(status=discord.Status.online, activity=game)
+    while True:
+        # 스케줄러를 실행할 때도 한국 시간으로 설정합니다
+        Sc_now = datetime.now(KST)
+        print(f"Now it's {Sc_now.hour}:{Sc_now.minute}")
+        schedule.run_pending()
+        time.sleep(1)
 
 @client.event
 async def on_message(message):
@@ -475,17 +481,13 @@ async def on_message(message):
         print(f'정상 출력됨\n')
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
+def send_message():
+    channel = client.get_channel(1092242713279201280)
+    message = "매일 정해진 시간에 보낼 메시지를 여기에 입력하세요"
+    channel.send(message)
 
-#async def my_background_task():
-#    await client.wait_until_ready()
-#    channel = client.get_channel(969983391183282258) # 출력할 채널 ID 입력
-#    while True:
-#        now = datetime.datetime.now()
-#        if now.hour == 9 and now.minute == 0: # 매일 오전 9시
-#            await channel.send(Today_Uni_Soup()) # 함수 실행
-#        await asyncio.sleep(60) # 1분마다 반복
-#
-#client.loop.create_task(my_background_task())
+# 매일 정해진 시간에 send_message 함수를 실행합니다
+schedule.every().day.at("05:04").do(send_message)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
         

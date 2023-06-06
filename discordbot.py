@@ -117,9 +117,9 @@ async def on_message(message):
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name=f"{temperature}C", value=f"어제 보다{temperature_change}C\n체감 온도는 {perceived_temperature}C 입니다.", inline=False)
-        embed.add_field(name="", value=f"체감 온도 {perceived_temperature}\n", inline=False)
+        #embed.add_field(name="", value=f"체감 온도 {perceived_temperature}\n", inline=False)
         embed.add_field(name="날씨\n", value=f"{weather_status}\n", inline=True)
-        embed.add_field(name="습도\n", value=f"{humidity}\n", inline=False)
+        embed.add_field(name="습도\n", value=f"{humidity}\n", inline=True)
         embed.add_field(name=f"{wind_direction}\n", value=f"{wind_speed}\n", inline=True)
 
         embed.add_field(name="\n", value=f"\n", inline=False)

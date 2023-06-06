@@ -55,6 +55,82 @@ async def on_message(message):
     
 #------------------------------------------------------------------------------------------------------------------------------------------------
 
+    if message.content.startswith('!날씨'):
+        channel = client.get_channel(1092242713279201280)# 출력할 채널 ID를 넣어주세요
+        print(f'!날씨 입력됨')
+        #입력한 채팅을 삭제한다.
+        #await message.delete()
+        #user = message.mentions[1] # '!날씨' 에서 유저정보를 user에 담는다.
+        #await channel.send("{} | {} 님이 '!날씨'을 입력하셨습니다.".format(user.author, user.mention)) # 작성된 채널에 메세지를 출력한다.
+        #await channel.send ("{} | {}님이 '!날씨'을 입력하셨습니다.".format(channel.author, channel.author.mention)) # 작성된 채널에 메세지 출력
+
+        # 크롤링할 URL
+        url = "https://search.naver.com/search.naver?ie=UTF-8&sm=whl_nht&query=%EB%B6%80%EC%82%B0+%EC%9A%A9%EB%8B%B9%EB%8F%99+%EB%82%A0%EC%94%A8"
+
+        live = "http://61.43.246.225:1935/rtplive/cctv_44.stream/playlist.m3u8"
+
+        # 크롤링할 페이지 요청
+        res = requests.get(url)
+
+        # 페이지 파싱
+        weather = BeautifulSoup(res.text, "html.parser")
+
+        # 날씨 정보가 있는 박스 찾기
+        box = weather.find("div", {"class": "weather_info"})
+
+        # 현재 온도 추출
+        temperature = box.find("strong").text
+
+        # 날씨 상태 추출
+        weather_status = box.find("span", {"class": "weather before_slash"}).text
+
+        # 온도 변화 추출
+        temperature_change = box.find("span", {"class": "temperature down"}).text.strip()
+
+        # 체감 온도, 습도, 풍향 정보 추출
+        summary_list = box.find("dl", {"class": "summary_list"})
+        perceived_temperature = summary_list.find("dt", string="체감").find_next("dd").text
+        humidity = summary_list.find("dt", string="습도").find_next("dd").text
+        wind_direction = summary_list.find("dt", string=lambda text: text and "풍" in text).text
+        wind_speed = summary_list.find("dt", string=lambda text: text and "풍" in text).find_next("dd").text
+
+        # 미세먼지, 초미세먼지, 자외선, 일출 정보가 있는 목록 찾기
+        chart_list = weather.find("ul", {"class": "today_chart_list"})
+
+        # 미세먼지 정보 추출
+        fine_dust = chart_list.find("strong", string="미세먼지").find_next("span", {"class": "txt"}).text
+
+        # 초미세먼지 정보 추출
+        ultrafine_dust = chart_list.find("strong", string="초미세먼지").find_next("span", {"class": "txt"}).text
+
+        # 자외선 정보 추출
+        uv_index = chart_list.find("strong", string="자외선").find_next("span", {"class": "txt"}).text
+
+        # 일출 정보 추출
+        sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
+
+        # 날씨 정보 출력
+        embed = discord.Embed(title=":white_sun_small_cloud:현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
+        embed.set_thumbnail(url="https://cdn-1.webcatalog.io/catalog/naver-weather/naver-weather-icon-filled-256.webp?v=1675613733392")
+        embed.add_field(name="\n", value=f"\n", inline=False)
+        embed.add_field(name=f"{temperature}", value=f"/{temperature_change}\n", inline=False)
+        embed.add_field(name="", value=f"체감 온도: {perceived_temperature}\n", inline=False)
+        embed.add_field(name="날씨\n", value=f"{weather_status}\n", inline=False)
+        embed.add_field(name="습도\n", value=f"{humidity}\n", inline=False)
+        embed.add_field(name=f"{wind_direction}\n", value=f"{wind_speed}\n", inline=False)
+
+        embed.add_field(name="\n", value=f"\n", inline=False)
+        embed.add_field(name="미세먼지\n", value=f"{fine_dust}\n", inline=False)
+        embed.add_field(name="초미세먼지\n", value=f"{ultrafine_dust}\n", inline=False)
+        embed.add_field(name="자외선 지수\n", value=f"{uv_index}\n", inline=False)
+        embed.add_field(name="일출 시간\n", value=f"{sunrise}\n", inline=False)
+
+        embed.add_field(name="\n", value=f"\n", inline=False)
+        embed.add_field(name="실시간 CCTV\n", value=f"{live}\n", inline=False)
+        
+
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
     if message.content.startswith('!학식'):
         channel = client.get_channel(969983391183282258)# 출력할 채널 ID를 넣어주세요
         print(f'!학식 입력됨')

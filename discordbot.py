@@ -85,7 +85,10 @@ async def on_message(message):
         weather_status = box.find("span", {"class": "weather before_slash"}).text
 
         # 온도 변화 추출
-        temperature_change = box.find("span", {"class": "temperature down"}).text.strip()
+        temperature_change_element = box.find("span", {"class": "temperature down"})
+        temperature_change_text = temperature_change_element.contents[0].strip()
+        blind_element = temperature_change_element.find_next("span", {"class": "blind"})
+        blind_text = blind_element.text.strip()
 
         # 체감 온도, 습도, 풍향 정보 추출
         summary_list = box.find("dl", {"class": "summary_list"})
@@ -113,11 +116,9 @@ async def on_message(message):
         embed = discord.Embed(title=":white_sun_small_cloud:현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-1.webcatalog.io/catalog/naver-weather/naver-weather-icon-filled-256.webp?v=1675613733392")
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name=f"{temperature}C", value=f"어제 보다{temperature_change}C\n체감 온도는 {perceived_temperature}C 입니다.", inline=False)
+        embed.add_field(name=f"현재 온도{temperature}C", value=f"어제 보다{temperature_change_text}C {blind_text}\n체감 온도는 {perceived_temperature}C 입니다.", inline=False)
         #embed.add_field(name="", value=f"체감 온도 {perceived_temperature}\n", inline=False)
+        embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="날씨\n", value=f"{weather_status}\n", inline=True)
         embed.add_field(name="습도\n", value=f"{humidity}\n", inline=True)
         embed.add_field(name=f"{wind_direction}\n", value=f"{wind_speed}\n", inline=True)

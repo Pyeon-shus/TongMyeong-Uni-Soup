@@ -116,7 +116,8 @@ async def on_message(message):
         embed = discord.Embed(title=":white_sun_small_cloud:현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-1.webcatalog.io/catalog/naver-weather/naver-weather-icon-filled-256.webp?v=1675613733392")
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name=f"현재 온도{temperature}C", value=f"어제 보다{temperature_change_text}C {blind_text}\n체감 온도는 {perceived_temperature}C 입니다.", inline=False)
+        embed.add_field(name=f"현재 온도 {temperature}C", value=f"어제 보다 {temperature_change_text}C {blind_text}\n체감 온도는 {perceived_temperature}C 입니다.", inline=True)
+        embed.add_field(name="일출 시간\n", value=f"{sunrise}\n", inline=True)
         #embed.add_field(name="", value=f"체감 온도 {perceived_temperature}\n", inline=False)
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="날씨\n", value=f"{weather_status}\n", inline=True)
@@ -124,11 +125,11 @@ async def on_message(message):
         embed.add_field(name=f"{wind_direction}\n", value=f"{wind_speed}\n", inline=True)
 
         embed.add_field(name="\n", value=f"\n", inline=False)
-        embed.add_field(name="추가 정보\n", value=f"\n", inline=False)
+        #embed.add_field(name="추가 정보\n", value=f"\n", inline=False)
         embed.add_field(name="미세먼지\n", value=f"{fine_dust}\n", inline=True)
         embed.add_field(name="초미세먼지\n", value=f"{ultrafine_dust}\n", inline=True)
         embed.add_field(name="자외선 지수\n", value=f"{uv_index}\n", inline=True)
-        embed.add_field(name="일출 시간\n", value=f"{sunrise}\n", inline=True)
+        #embed.add_field(name="일출 시간\n", value=f"{sunrise}\n", inline=True)
 
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="실시간 CCTV\n", value=f"{live}\n", inline=False)

@@ -127,6 +127,11 @@ async def on_message(message):
 
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name="실시간 CCTV\n", value=f"{live}\n", inline=False)
+        embed.set_footer(text="Bot Made by. Shus#7777, 자유롭게 이용해 주시면 됩니다.")
+        await channel.send (embed=embed) #채팅방에 출력되도록 하려면 messae.channel.send 로 바꾸면 된다.
+        #await message.author.send (embed=embed) #유저 개인 DM으로 전송한다.
+        #await channel.send(result)
+        print(f'정상 출력됨\n')
         
 
 #------------------------------------------------------------------------------------------------------------------------------------------------

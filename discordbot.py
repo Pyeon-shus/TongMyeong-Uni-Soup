@@ -113,7 +113,7 @@ async def on_message(message):
         sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
 
         # 날씨 정보 출력
-        embed = discord.Embed(title=":white_sun_small_cloud:현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
+        embed = discord.Embed(title=":white_sun_small_cloud:대연동 현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-1.webcatalog.io/catalog/naver-weather/naver-weather-icon-filled-256.webp?v=1675613733392")
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name=f"현재 온도 {temperature}C", value=f"어제 보다 {temperature_change_text}C {blind_text}\n체감 온도는 {perceived_temperature}C 입니다.", inline=True)
@@ -200,7 +200,7 @@ async def on_message(message):
         sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
 
         # 날씨 정보 출력
-        embed = discord.Embed(title=":white_sun_small_cloud:현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
+        embed = discord.Embed(title=":white_sun_small_cloud:용당동 현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-1.webcatalog.io/catalog/naver-weather/naver-weather-icon-filled-256.webp?v=1675613733392")
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name=f"현재 온도 {temperature}C", value=f"어제 보다 {temperature_change_text}C {blind_text}\n체감 온도는 {perceived_temperature}C 입니다.", inline=True)
@@ -287,7 +287,7 @@ async def on_message(message):
         sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
 
         # 날씨 정보 출력
-        embed = discord.Embed(title=":white_sun_small_cloud:현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
+        embed = discord.Embed(title=":white_sun_small_cloud:용호동 현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
         embed.set_thumbnail(url="https://cdn-1.webcatalog.io/catalog/naver-weather/naver-weather-icon-filled-256.webp?v=1675613733392")
         embed.add_field(name="\n", value=f"\n", inline=False)
         embed.add_field(name=f"현재 온도 {temperature}C", value=f"어제 보다 {temperature_change_text}C {blind_text}\n체감 온도는 {perceived_temperature}C 입니다.", inline=True)

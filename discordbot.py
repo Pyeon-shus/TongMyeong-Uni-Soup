@@ -57,7 +57,7 @@ async def on_message(message):
 
     if message.content.startswith('!대연동'):
         channel = client.get_channel(1099635720353763349)# 출력할 채널 ID를 넣어주세요
-        print(f'!날씨 입력됨')
+        print(f'!대연동 입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
         #user = message.mentions[1] # '!날씨' 에서 유저정보를 user에 담는다.
@@ -86,6 +86,8 @@ async def on_message(message):
 
         # 온도 변화 추출
         temperature_change_element = box.find("span", {"class": "temperature down"})
+        if len(temperature_change_element) > 0
+            temperature_change_element = box.find("span", {"class": "temperature up"})
         temperature_change_text = temperature_change_element.contents[0].strip()
         blind_element = temperature_change_element.find_next("span", {"class": "blind"})
         blind_text = blind_element.text.strip()
@@ -144,7 +146,7 @@ async def on_message(message):
 
     if message.content.startswith('!용당동'):
         channel = client.get_channel(1099635720353763349)# 출력할 채널 ID를 넣어주세요
-        print(f'!날씨 입력됨')
+        print(f'!용당동 입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
         #user = message.mentions[1] # '!날씨' 에서 유저정보를 user에 담는다.
@@ -173,6 +175,8 @@ async def on_message(message):
 
         # 온도 변화 추출
         temperature_change_element = box.find("span", {"class": "temperature down"})
+        if len(temperature_change_element) > 0
+            temperature_change_element = box.find("span", {"class": "temperature up"})
         temperature_change_text = temperature_change_element.contents[0].strip()
         blind_element = temperature_change_element.find_next("span", {"class": "blind"})
         blind_text = blind_element.text.strip()
@@ -231,7 +235,7 @@ async def on_message(message):
 
     if message.content.startswith('!용호동'):
         channel = client.get_channel(1099635720353763349)# 출력할 채널 ID를 넣어주세요
-        print(f'!날씨 입력됨')
+        print(f'!용호동 입력됨')
         #입력한 채팅을 삭제한다.
         #await message.delete()
         #user = message.mentions[1] # '!날씨' 에서 유저정보를 user에 담는다.
@@ -260,6 +264,8 @@ async def on_message(message):
 
         # 온도 변화 추출
         temperature_change_element = box.find("span", {"class": "temperature down"})
+        if len(temperature_change_element) > 0
+            temperature_change_element = box.find("span", {"class": "temperature up"})
         temperature_change_text = temperature_change_element.contents[0].strip()
         blind_element = temperature_change_element.find_next("span", {"class": "blind"})
         blind_text = blind_element.text.strip()

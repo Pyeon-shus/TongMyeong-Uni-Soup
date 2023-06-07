@@ -86,7 +86,7 @@ async def on_message(message):
 
         # 온도 변화 추출
         temperature_change_element = box.find("span", {"class": "temperature down"})
-        if len(temperature_change_element) > 0
+        if len(temperature_change_element) == 0:
             temperature_change_element = box.find("span", {"class": "temperature up"})
         temperature_change_text = temperature_change_element.contents[0].strip()
         blind_element = temperature_change_element.find_next("span", {"class": "blind"})
@@ -175,7 +175,7 @@ async def on_message(message):
 
         # 온도 변화 추출
         temperature_change_element = box.find("span", {"class": "temperature down"})
-        if len(temperature_change_element) > 0
+        if len(temperature_change_element) == 0:
             temperature_change_element = box.find("span", {"class": "temperature up"})
         temperature_change_text = temperature_change_element.contents[0].strip()
         blind_element = temperature_change_element.find_next("span", {"class": "blind"})
@@ -264,7 +264,7 @@ async def on_message(message):
 
         # 온도 변화 추출
         temperature_change_element = box.find("span", {"class": "temperature down"})
-        if len(temperature_change_element) > 0
+        if len(temperature_change_element) == 0:
             temperature_change_element = box.find("span", {"class": "temperature up"})
         temperature_change_text = temperature_change_element.contents[0].strip()
         blind_element = temperature_change_element.find_next("span", {"class": "blind"})

@@ -112,7 +112,10 @@ async def on_message(message):
         uv_index = chart_list.find("strong", string="자외선").find_next("span", {"class": "txt"}).text
 
         # 일출 정보 추출
-        sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
+        sunrise_element = chart_list.find("strong", string="일출")
+        if sunrise_element is None:
+            sunrise_element = chart_list.find("strong", string="일몰")
+        sunrise = sunrise_element.find_next("span", {"class": "txt"}).text
 
         # 날씨 정보 출력
         embed = discord.Embed(title=":white_sun_small_cloud:대연동 현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
@@ -201,7 +204,10 @@ async def on_message(message):
         uv_index = chart_list.find("strong", string="자외선").find_next("span", {"class": "txt"}).text
 
         # 일출 정보 추출
-        sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
+        sunrise_element = chart_list.find("strong", string="일출")
+        if sunrise_element is None:
+            sunrise_element = chart_list.find("strong", string="일몰")
+        sunrise = sunrise_element.find_next("span", {"class": "txt"}).text
 
         # 날씨 정보 출력
         embed = discord.Embed(title=":white_sun_small_cloud:용당동 현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
@@ -290,7 +296,10 @@ async def on_message(message):
         uv_index = chart_list.find("strong", string="자외선").find_next("span", {"class": "txt"}).text
 
         # 일출 정보 추출
-        sunrise = chart_list.find("strong", string="일출").find_next("span", {"class": "txt"}).text
+        sunrise_element = chart_list.find("strong", string="일출")
+        if sunrise_element is None:
+            sunrise_element = chart_list.find("strong", string="일몰")
+        sunrise = sunrise_element.find_next("span", {"class": "txt"}).text
 
         # 날씨 정보 출력
         embed = discord.Embed(title=":white_sun_small_cloud:용호동 현재 날씨:white_sun_small_cloud:", description="",timestamp=datetime.datetime.now(pytz.timezone('UTC')), color=0x00b992)
